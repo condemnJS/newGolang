@@ -4,10 +4,12 @@ import (
 	"fmt"
 	"net/http"
 	"example-api-project/pkg/transport"
-	"example-api-project/pkg/types"
+	"os"
 )
 
 func main() {
+	port := os.Getenv("PORT")
+
 	r := transport.Router()
-	fmt.Println(http.ListenAndServe(types.PORT, r))
+	fmt.Println(http.ListenAndServe(":"+port, r))
 }
